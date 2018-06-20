@@ -9,10 +9,14 @@ class BlogUser(models.Model):
     name = models.CharField(max_length=50)
     friends = models.ManyToManyField(
         'self',
+        blank=True,
+        null=True,
     )
     block_users = models.ManyToManyField(
         'self',
         symmetrical=False,
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
