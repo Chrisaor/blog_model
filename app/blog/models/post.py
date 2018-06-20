@@ -15,10 +15,14 @@ class Post(Base):
     def __str__(self):
         return f'{self.title}'
 
+    @property
+    def post_like(self):
+        return f'이 포스트의 좋아요 수 : {len(PostLike.objects.filter(post_id=self.id))}'
+
 class PostLike(Base):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(BlogUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'포스트 {self.post}의 좋아요 수 : {len(self.objects.all())}'
+        return f'좋아요!'
 
