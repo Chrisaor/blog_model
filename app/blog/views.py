@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from blog.models import Post, BlogUser, post
+from blog.models import Post, BlogUser, post, Comment
 
 
 def index(request):
@@ -13,8 +13,10 @@ def index(request):
 
 def detail(request, pk):
     post = Post.objects.get(id=pk)
+    comments = post.comment_set.all()
     context = {
         'post':post,
+        'comments':comments,
     }
     return render(request, 'blog/detail.html', context)
 
