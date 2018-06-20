@@ -18,3 +18,10 @@ def detail(request, pk):
     }
     return render(request, 'blog/detail.html', context)
 
+def like_detail(request, pk):
+    post = Post.objects.get(id=pk)
+    post_likes= post.postlike_set.all()
+    context = {
+        'post_likes':post_likes,
+    }
+    return render(request, 'blog/like_detail.html', context)

@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block content %}
+
+<ul>
+{% for post_like in post_likes %}
+    <li>{{ post_like.user }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

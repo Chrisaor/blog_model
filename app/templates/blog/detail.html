@@ -8,6 +8,8 @@
 <div class="container">
     <h2 class="text-center">{{ post.title }}</h2>
     <h6 class="text-right">게시자 : {{ post.user }}</h6>
-    <p>{{ post.content }}</p></div>
-
+    <h6 class="text-right">게시날짜 : {{ post.created_at }}</h6>
+    <p>{{ post.content }}</p>
+    <h6><a href="{% url 'like-detail' post.id %}">{{ post.post_like }}명</a>이 좋아요를 눌렀습니다.</h6>
+    </div>
 {% endblock %}

@@ -17,7 +17,7 @@ class Post(Base):
 
     @property
     def post_like(self):
-        return f'이 포스트의 좋아요 수 : {len(PostLike.objects.filter(post_id=self.id))}'
+        return f'{len(PostLike.objects.filter(post_id=self.id))}'
 
 class PostLike(Base):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
