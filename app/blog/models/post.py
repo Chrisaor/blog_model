@@ -16,8 +16,15 @@ class Post(Base):
         return f'{self.title}'
 
     @property
-    def post_like(self):
+    def number_like(self):
         return f'{len(PostLike.objects.filter(post_id=self.id))}'
+
+    @property
+    def like_users(self):
+        result = '이 포스트에 좋아요를 누른 사람:\n'
+        for post_like in PostLike.objects.filter(post_id=self.id):
+            result += f'- {post_like.user}\n'
+        return print(result)
 
 class PostLike(Base):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
